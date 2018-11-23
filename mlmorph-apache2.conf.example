@@ -1,8 +1,8 @@
 <VirtualHost *:80>
     ServerName mydomain
-    WSGIDaemonProcess mlmorph user=www-data group=www-data threads=5
-    WSGIScriptAlias /mlmorph /home/user/path/to/mlmorph/web/mlmorph.wsgi
-    <Directory /home/user/path/to/mlmorph/web/>
+    WSGIDaemonProcess mlmorph user=www-data group=www-data threads=5 python-home=/home/user/path/to/mlmorph-web/ENV_DIR
+    WSGIScriptAlias /mlmorph /home/user/path/to/mlmorph-web/mlmorph.wsgi
+    <Directory /home/user/path/to/mlmorph-web/>
         WSGIProcessGroup mlmorph
         WSGIApplicationGroup %{GLOBAL}
         WSGIScriptReloading On
