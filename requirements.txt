@@ -1,2 +1,4 @@
 Flask
 regex
+mlmorph
+mlmorph-spellchecker
