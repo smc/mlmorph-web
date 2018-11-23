@@ -23,7 +23,8 @@ pip install -r requirements.txt
 Start the webserver and open the URL given in the output with a web browser.
 
 ```
-python mlmorphweb.py
+gunicorn mlmorphweb:app
 ```
 
 Or configure webservers like Apache with this flask application. You may use the example configuration for reference. Refer http://flask.pocoo.org/docs/0.12/deploying/ for more information on deploying flask applications.
+This application can also be easily deployed in Heroku. See https://devcenter.heroku.com/articles/getting-started-with-python
