@@ -1,4 +1,5 @@
 Flask
 regex
+gunicorn
 mlmorph
 mlmorph-spellchecker
