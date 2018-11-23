@@ -4,11 +4,9 @@ import os
 from flask import Flask, jsonify, render_template, request
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
-sys.path.insert(0, '../python')
-sys.path.insert(0, '../')
 
 from mlmorph import Generator, Analyser
-import spellcheck
+from mlmorph_spellchecker import spellcheck, getSuggestions
 
 app = Flask(__name__)
 
@@ -84,10 +82,10 @@ def do_spellcheck():
     # real analysis
     for windex in range(len(words)):
         word = words[windex]
-        isCorrect = spellcheck.spellcheck(word, analyser)
+        isCorrect = spellcheck(word, analyser)
         suggestions = []
         if not isCorrect:
-            suggestions = spellcheck.getSuggestions(word, analyser)
+            suggestions = getSuggestions(word, analyser)
         result[word] = {'correct': isCorrect, 'suggestions': suggestions}
     return jsonify(result)
 
