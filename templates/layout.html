@@ -1,40 +1,71 @@
 <!doctype html>
 <html lang="ml">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../static/favicon.ico">
-	<title>Malayalam morphological analyser</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	{% block scripts %}{% endblock %}
-	{% block styles %}{% endblock %}
-</head>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Malayalam morphological analyser">
+		<meta name="author" content="Santhosh Thottingal">
+		<link rel="icon" href="../static/favicon.ico">
+		<title>Malayalam morphological analyser</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		{% block scripts %}{% endblock %}
+		{% block styles %}{% endblock %}
+	</head>
 
-<body>
-	<header>
-		<nav class="teal lighten-2">
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo center">Malayalam morphological analyser</a>
-			</div>
-		</nav>
-	</header>
-	<div class="container">
-		{% block body %}{% endblock %}
-	</div>
-	</div>
-	<footer class="page-footer teal lighten-2">
-		<div class="footer-copyright teal lighten-2">
-			<p> A project by Santhosh Thottingal. Source code:
-				<a class="grey-text text-lighten-4 right" href="https://gitlab.com/smc/mlmorph">gitlab.com/smc/mlmorph</a>
-			</p>
+	<body>
+		<header class="navbar-fixed">
+			<nav class="light-blue lighten-1" role="navigation">
+				<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Malayalam morphological
+						analyser</a>
+					<ul class="right hide-on-med-and-down">
+						<li><a href="/#analyser">Analyser</a></li>
+						<li><a href="/#generator">Generator</a></li>
+						<li><a href="/spellchecker">Spellchecker</a></li>
+					</ul>
+
+					<ul id="nav-mobile" class="sidenav">
+						<li><a href="/#analyser">Analyser</a></li>
+						<li><a href="/#generator">Generator</a></li>
+						<li><a href="/spellchecker">Spellchecker</a></li>
+					</ul>
+					<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				</div>
+			</nav>
+		</header>
+		<div class="container">
+			{% block body %}{% endblock %}
 		</div>
-	</footer>
-</body>
+		</div>
+
+		<footer class="page-footer light-blue">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="white-text">Malayalam morphological analyser</h5>
+						<p class="grey-text text-lighten-4">mlmorph is Malayalam Morphology Analyzer and Generator.</p>
+					</div>
+					<div class="col l3 s12">
+						<h5 class="white-text">Source code</h5>
+						<ul>
+							<li><a class="white-text" href="https://gitlab.com/smc/mlmorph">mlmorph</a></li>
+							<li><a class="white-text" href="https://gitlab.com/smc/mlmorph-spellchecker">mlmorph-spellchecker</a></li>
+							<li><a class="white-text" href="https://gitlab.com/smc/mlmorph-web">mlmorph-web</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright">
+				<div class="container">
+					&copy; <a class="white-text text-lighten-3" href="https://thottingal.in">Santhosh Thottingal</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+
+</html>

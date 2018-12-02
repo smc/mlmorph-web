@@ -10,7 +10,7 @@ crossorigin="anonymous"></script>
 {% endblock %}
 {% block body %} {% if error %}
 <p class=error><strong>Error:</strong> {{ error }}{% endif %}
-	<section class='section analyse row'>
+	<section class='section analyse row' id="analyser">
 		<h5>Analysis</h5>
 		<div class="input-field col s12">
 			<textarea id="text_to_analyse" placeholder='Text to analyse' class="materialize-textarea" name="text">{% if text %}{{text}}{% endif %}</textarea>
@@ -29,14 +29,8 @@ crossorigin="anonymous"></script>
 		</table>
 	</section>
 	<div class="divider"></div>
-	<section class='section generate row'>
+	<section class='section generate row' id="generator">
 		<h5>Generation</h5>
-		<!--
-		<div class="input-field col s4">
-			<input type=text id="rootword" name=word placeholder='Root word' value='{% if word %}{{word}}{% endif %}' />
-			<label for="rootword">Root word</label>
-		</div>
-	-->
 		<div class="chips chips-autocomplete  morphemes"></div>
 
 		<a id='generate' class="waves-effect waves-light btn">Generate</a>
