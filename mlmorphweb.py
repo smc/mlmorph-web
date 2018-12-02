@@ -22,6 +22,9 @@ def index():
 def spellchecker():
     return render_template('spellcheck.html',)
 
+@app.route("/number")
+def number():
+    return render_template('number.html',)
 
 @app.route("/api/analyse", methods=['GET', 'POST'])
 def do_analyse():

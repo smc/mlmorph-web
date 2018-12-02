@@ -1,0 +1,16 @@
+#result {
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: #333;
+    background-color: #e3f2fd;
+}
+
+#analysis {
+    padding: 0.5em;
+    font-size: 1em;
+    color: #999;
+}
+
+#num {
+    width: 20ch;
+}

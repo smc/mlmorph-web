@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='number.js') }}"></script>
+{% endblock %}
+{% block styles %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='number.css') }}">
+{% endblock %}
+{% block body %}
+{% if error %}
+<p class=error>
+    <strong>Error:</strong> {{ error }}{% endif %}</p>
+<section class='section'>
+    <h5>Number spellout</h5>
+    <p>Enter a number to spellout it in Malayalam</p>
+    <input id="num" type="number" max="1000000000000" placeholder="Enter a number" />
+    <div id="analysis" class="row"></div>
+    <div id="result" class="row"></div>
+
+    <p>For more details on see the article <a href="http://thottingal.in/blog/2017/12/10/number-spellout-and-generation-in-malayalam-using-morphology-analyser/">Number
+            spellout and generation in Malayalam using Morphology analyser</a>
+    </p>
+</section>
+
+{% endblock %}
