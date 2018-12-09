@@ -85,6 +85,8 @@ function init() {
 			}
 		}
 	);
+
+	M.Sidenav.init(document.querySelectorAll('.sidenav'));
 }
 
 function fetchTags() {

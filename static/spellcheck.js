@@ -131,5 +131,6 @@ window.onload = function () {
 		check(editor);
 		enable();
 	}
+	M.Sidenav.init(document.querySelectorAll('.sidenav'));
 };
 

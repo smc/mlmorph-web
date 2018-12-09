@@ -60,4 +60,5 @@ window.addEventListener('load', () => {
     let numElement = document.getElementById('num');
     numElement.addEventListener('change', onNumberChange);
     numElement.addEventListener('keyup', onNumberChange);
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
 });
