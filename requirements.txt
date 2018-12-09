@@ -1,5 +1,5 @@
 Flask
 regex
 gunicorn
-mlmorph==1.0.0.dev3
-mlmorph-spellchecker==1.0.0.dev7
+mlmorph==1.0.0.dev4
+mlmorph-spellchecker==1.0.0.dev8
