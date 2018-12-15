@@ -1,7 +1,7 @@
 var morphemechipsInstance, tagInfo;
 
 function formatResult(result) {
-	var $resultHTML = $('<div>').addClass('result');
+	var $resultHTML = $('<ul>').addClass('result');
 
 	let morphemes = result.morphemes;
 	for (let i = 0; i < morphemes.length; i++) {
@@ -19,7 +19,7 @@ function formatResult(result) {
 				$tags.append($('<div>').addClass('tag').text(tagLabel));
 			}
 		}
-		$resultHTML.append($('<div>').addClass('component')
+		$resultHTML.append($('<li>').addClass('component')
 			.append($('<div>').addClass('root').text(root))
 			.append($tags)
 		);

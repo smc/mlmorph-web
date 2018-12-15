@@ -3,18 +3,20 @@
 }
 
 .component {
-	display: inline;
+	display: inline-block;
 	border: 1px solid #ffb74d;
 	border-left: 4px solid #ffb74d;
 	border-radius: 2px;
 	background-color: ivory;
-	padding: 5px;
-	margin-right: 1em;
+	padding: 2px;
+	margin: 2px;
 	color: #263238;
+	white-space: nowrap;
 }
 
 .root {
-	display: inline;
+	display: block;
+	padding: 0 5px;
 	font-size: 1em;
 	font-family: 'Manjari', 'Meera', sans-serif;
 }
