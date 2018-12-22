@@ -1,20 +1,14 @@
 {
-	"extends": "wikimedia",
+	"extends": "standard",
 	"parserOptions": {
 		"ecmaVersion": 6
 	},
 	"env": {
 		"es6": true,
-		"browser": true,
-		"jquery": true,
-		"qunit": true,
 		"node": true,
-		"mocha": true
+		"browser": true
 	},
 	"globals": {
-		"require": false
-	},
-	"rules": {
-		"one-var": [ "error", { "var": "always" } ]
+		"M": true
 	}
 }

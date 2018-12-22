@@ -26,12 +26,12 @@ def spellchecker():
 def number():
     return render_template('number.html',)
 
-@app.route("/api/analyse", methods=['GET', 'POST'])
+@app.route("/api/analyse", methods=['POST', 'GET'])
 def do_analyse():
     text = None
     analyse_results = {}
     if request.method == 'POST':
-        text = request.form['text']
+        text = request.json.get('text')
     else:
         text = request.args.get('text')
     text = text.strip()
