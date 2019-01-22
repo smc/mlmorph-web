@@ -13,7 +13,7 @@ const onesStr = [
 
 function positionValues (value) {
   let result = ''
-  let crores = value > 10000000 ? parseInt(value / 10000000) : 0
+  let crores = value >= 10000000 ? parseInt(value / 10000000) : 0
   let lakhs = parseInt((value % 10000000) / 100000)
   let thousands = parseInt((value % 100000) / 1000)
   let hundreds = parseInt((value % 1000) / 100)
