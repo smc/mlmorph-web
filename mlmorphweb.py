@@ -17,6 +17,9 @@ analyser = Analyser()
 def index():
     return render_template('mlmorph.html',)
 
+@app.route("/ner")
+def ner():
+    return render_template('named-entity-recognition.html',)
 
 @app.route("/spellchecker")
 def spellchecker():

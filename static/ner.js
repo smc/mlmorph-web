@@ -1,19 +1,14 @@
-var morphemechipsInstance, tagInfo
+function isEntity (result) {
+  let morphemes = result.morphemes
+  for (let i = 0; i < morphemes.length; i++) {
+    let morpheme = morphemes[i]
+    let tags = morpheme.pos
 
-function onGenerateClick () {
-  let genResult = document.querySelector('.genresult')
-  genResult.innerHTML = ''
-  document.getElementById('genresult-progress').style.display = ''
-  generate(morphemechipsInstance.getDataString()).then((data) => {
-    let result = data.result
-    for (let key in result) {
-      let resultEl = document.createElement('div')
-      resultEl.classList.add('result')
-      resultEl.textContent = result[key]
-      genResult.appendChild(resultEl)
+    for (let j = 0; j < tags.length; j++) {
+      if (tags[j] === 'np') return true
     }
-    document.getElementById('genresult-progress').style.display = 'none'
-  })
+  }
+  return false
 }
 
 function onAnalysisClick () {
@@ -27,48 +22,39 @@ function onAnalysisClick () {
     document.getElementById('analresult-progress').style.display = 'none'
     let tokens = text.split(/\s+/)
     for (let i = 0; i < tokens.length; i++) {
-      let length = 0
+      let entity = false
       let key = tokens[i]
       let values = result[key]
       if (!values) continue
       let formattedValues = document.createElement('tr')
-      if (values.length > 0) {
-        length = 1
-      }
-      for (let i = 0; i < length; i++) {
-        formattedValues.appendChild(formatResult(values[i]))
+      for (let i = 0; i < values.length; i++) {
+        if (isEntity(values[i])) {
+          entity = true
+          formattedValues.appendChild(formatResult(values[i]))
+          break
+        }
       }
       let tr = document.createElement('tr')
       let td = document.createElement('td')
       td.textContent = key
       tr.appendChild(td)
       tr.appendChild(formattedValues)
-      document.querySelector('.analresult tbody').appendChild(tr)
+      if (entity) {
+        document.querySelector('.analresult tbody').appendChild(tr)
+      }
     };
   })
 }
 
 function init () {
   document.getElementById('analyse').onclick = onAnalysisClick
-  document.getElementById('generate').onclick = onGenerateClick
   document.querySelector('.analresult').style.display = 'none'
-  morphemechipsInstance = M.MorphemeChips.init(
-    document.querySelector('.chips-autocomplete'), {
-      placeholder: 'Add morphemes',
-      autocompleteOptions: {
-        data: tagInfo,
-        limit: Infinity,
-        minLength: 1
-      }
-    }
-  )
 
   M.Sidenav.init(document.querySelectorAll('.sidenav'))
 }
 
 window.onload = function () {
   document.getElementById('analresult-progress').style.display = 'none'
-  document.getElementById('genresult-progress').style.display = 'none'
   fetchTags().then((tags) => {
     tagInfo = tags
     init()

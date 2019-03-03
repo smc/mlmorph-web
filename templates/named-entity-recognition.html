@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='morph.js') }}"></script>
+<script src="{{ url_for('static', filename='ner.js') }}"></script>
+{% endblock %}
+{% block styles %}
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+{% block body %}
+{% if error %}
+<p class=error>
+    <strong>Error:</strong> {{ error }}{% endif %}</p>
+<section class='section row'>
+    <h5>Named entity recognition</h5>
+    <p>Please enter Malayalam text below. </p>
+    <textarea id="text_to_analyse" placeholder='Text to analyse' class="materialize-textarea" name="text">ഇന്ത്യയിൽ കേരളത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം. എന്റെ മാതൃഭാഷ മലയാളമാണ്.</textarea>
+    <a id='analyse' class="waves-effect waves-light btn">Analyse</a>
+    <progress id="analresult-progress"></progress>
+    <table class='analresult highlight col s12'>
+        <thead>
+            <tr>
+                <th>Entities</th>
+                <th>Analysis</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+{% endblock %}
