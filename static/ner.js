@@ -1,18 +1,15 @@
-function isEntity (result) {
+function findEntity (result) {
   let morphemes = result.morphemes
   for (let i = 0; i < morphemes.length; i++) {
     let morpheme = morphemes[i]
     let tags = morpheme.pos
-
-    for (let j = 0; j < tags.length; j++) {
-      if (tags[j] === 'np') return true
-    }
+    if (tags[0] === 'np') return morpheme.root
   }
   return false
 }
 
 function onAnalysisClick () {
-  document.querySelector('.analresult tbody').innerHTML = ''
+  document.querySelector('.analresult').innerHTML = ''
   document.querySelector('.analresult').style.display = ''
   document.getElementById('analresult-progress').style.display = ''
 
@@ -22,25 +19,17 @@ function onAnalysisClick () {
     document.getElementById('analresult-progress').style.display = 'none'
     let tokens = text.split(/\s+/)
     for (let i = 0; i < tokens.length; i++) {
-      let entity = false
       let key = tokens[i]
       let values = result[key]
       if (!values) continue
-      let formattedValues = document.createElement('tr')
       for (let i = 0; i < values.length; i++) {
-        if (isEntity(values[i])) {
-          entity = true
-          formattedValues.appendChild(formatResult(values[i]))
+        let entity = findEntity(values[i])
+        if (entity) {
+          let itemElement = document.createElement('li')
+          itemElement.textContent = entity
+          document.querySelector('.analresult').appendChild(itemElement)
           break
         }
-      }
-      let tr = document.createElement('tr')
-      let td = document.createElement('td')
-      td.textContent = key
-      tr.appendChild(td)
-      tr.appendChild(formattedValues)
-      if (entity) {
-        document.querySelector('.analresult tbody').appendChild(tr)
       }
     };
   })
