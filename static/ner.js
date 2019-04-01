@@ -8,6 +8,10 @@ function findEntity (result) {
   return false
 }
 
+function getWikiInfo (title) {
+  return fetch(`https://ml.wikipedia.org/api/rest_v1/page/summary/${title}`).then(res => res.json())
+}
+
 function onAnalysisClick () {
   document.querySelector('.analresult').innerHTML = ''
   document.querySelector('.analresult').style.display = ''
@@ -24,10 +28,26 @@ function onAnalysisClick () {
       if (!values) continue
       for (let i = 0; i < values.length; i++) {
         let entity = findEntity(values[i])
-        if (entity) {
-          let itemElement = document.createElement('li')
-          itemElement.textContent = entity
+        if (entity.length > 1) {
+          let itemElement = document.createElement('tr')
+          let entityLabel = document.createElement('td')
+          entityLabel.innerText = entity
+          itemElement.appendChild(entityLabel)
+          let entityDesc = document.createElement('td')
+          entityDesc.className = 'entity-desc'
+          entityDesc.innerHTML = ''
+          itemElement.appendChild(entityDesc)
           document.querySelector('.analresult').appendChild(itemElement)
+          getWikiInfo(entity).then((info) => {
+            entityDesc.innerText = info.description || info.displaytitle
+            if (info.thumbnail) {
+              entityDesc.style.backgroundImage = 'url(' + info.thumbnail.source + ')'
+            }
+            let link = document.createElement('a')
+            link.innerText = '🔗'
+            link.href = info.content_urls.desktop.page
+            entityDesc.appendChild(link)
+          })
           break
         }
       }

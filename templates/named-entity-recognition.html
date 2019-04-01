@@ -5,6 +5,7 @@
 {% endblock %}
 {% block styles %}
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/ner.css') }}">
 {% endblock %}
 {% block body %}
 {% if error %}
@@ -16,9 +17,9 @@
     <textarea id="text_to_analyse" placeholder='Text to analyse' class="materialize-textarea" name="text">ഇന്ത്യയിൽ കേരളത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.</textarea>
     <a id='analyse' class="waves-effect waves-light btn">Analyse</a>
     <progress id="analresult-progress"></progress>
-    <ul class='analresult highlight col s12'>
+    <table class='analresult highlight col s12'>
 
-    </ul>
+    </table>
 </section>
 
 {% endblock %}
