@@ -48,7 +48,7 @@ def do_analyse():
             anals_results = []
         else:
             for aindex in range(len(anals)):
-                anals_results.append(analyser.parse_analysis(anals[aindex]))
+                anals_results.append(analyser.parse_analysis(anals[aindex][0]))
 
         anals_results.sort(key=lambda analysis: analysis['weight'])
         analyse_results[word] = anals_results
