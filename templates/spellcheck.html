@@ -1,27 +1,26 @@
-{% extends 'layout.html' %}
-{% block scripts %}
-<script src="{{ url_for('static', filename='spellcheck.js') }}"></script>
-{% endblock %}
-{% block styles %}
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/spellcheck.css') }}">
-{% endblock %}
-{% block body %}
-{% if error %}
-<p class=error>
-	<strong>Error:</strong> {{ error }}{% endif %}</p>
-<section class='section row'>
-	<h5>Spellchecker</h5>
-	<div class="sp-container">
-		<p>Please enter Malayalam text below. Spellcheck is enabled. Right click the misspelt words for suggestions.</p>
-		<div class="sp-editor" spellcheck="false" contenteditable="true" contextmenu="suggestionsmenu">
-			ഇന്ത്യയിൽ  കേരള സംസ്താനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം. എൻറെ മാതൃബാഷ മലയാളമാണ്.
-		</div>
+<!DOCTYPE html>
+<html>
+<head>
+		<script src="{{ url_for('static', filename='spellcheck.js') }}"></script>
 
-		<menu type="context" id="suggestionsmenu">
-			<menuitem type="checkbox" label="Spellcheck" id="sp-toggle" onclick="toggleSpellcheck()" checked ></menuitem>
-		</menu>
-		<p><em>Note: Works only in Firefox browser</em></p>
-	</div>
-</section>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/spellcheck.css') }}">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>Hello world</v-container>
+      </v-content>
+    </v-app>
+  </div>
 
-{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+  <script>
+    new Vue({ el: '#app' })
+  </script>
+</body>
+</html>

@@ -8,14 +8,16 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 from mlmorph import Generator, Analyser
 from mlmorph_spellchecker import spellcheck, getSuggestions
 
-app = Flask(__name__)
+app = Flask(__name__,
+    static_folder = "./dist/static",
+    template_folder = "./dist")
 
 generator = Generator()
 analyser = Analyser()
 
 @app.route("/")
 def index():
-    return render_template('mlmorph.html',)
+    return render_template('index.html',)
 
 @app.route("/ner")
 def ner():
