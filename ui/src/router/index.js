@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const routerOptions = [
-  { path: '/', component: 'Morph' },
+  { path: '/', component: 'Analyser' },
+  { path: '/generator', component: 'Generator' },
   { path: '/ner', component: 'Ner' },
   { path: '/number', component: 'Number' },
   { path: '/spellcheck', component: 'Spellchecker' },

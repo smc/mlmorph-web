@@ -1,6 +1,10 @@
 <template>
   <v-app light>
     <v-navigation-drawer fixed v-model="drawer" app>
+      <h1>{{appName}}</h1>
+
+      <h3>Malayalam morphology analyser</h3>
+      <v-divider></v-divider>
       <v-list dense class="pt-0">
         <v-list-tile v-for="item in items" :key="item.title" :href="item.href">
           <v-list-tile-action>
@@ -16,7 +20,7 @@
 
     <v-toolbar color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="white--text"></v-toolbar-side-icon>
-      <v-toolbar-title href="/" class="white--text">Mlmorph</v-toolbar-title>
+      <v-toolbar-title href="/" class="white--text">{{appName}}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content id="content">
@@ -29,8 +33,10 @@
 export default {
   name: "app",
   data: () => ({
+    appName:"Mlmorph",
     items: [
-      { title: "Home", icon: "dashboard", href: "/" },
+      { title: "Analyser", icon: "apps", href: "/" },
+      { title: "Generator", icon: "apps", href: "/generator" },
       { title: "Named entity recognition", icon: "apps", href: "/ner" },
       { title: "Spellchecker", icon: "apps", href: "/spellcheck" },
       { title: "Number spellout", icon: "apps", href: "/number" },
