@@ -15,21 +15,10 @@ app = Flask(__name__,
 generator = Generator()
 analyser = Analyser()
 
-@app.route("/")
-def index():
+@app.route("/",defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
     return render_template('index.html',)
-
-@app.route("/ner")
-def ner():
-    return render_template('named-entity-recognition.html',)
-
-@app.route("/spellchecker")
-def spellchecker():
-    return render_template('spellcheck.html',)
-
-@app.route("/number")
-def number():
-    return render_template('number.html',)
 
 @app.route("/api/analyse", methods=['POST', 'GET'])
 def do_analyse():
