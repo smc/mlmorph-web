@@ -22,7 +22,7 @@ export default {
   }),
   methods: {
     generate () {
-      const api = `https://morph.smc.org.in/api/generate?word=${this.input}`
+      const api = `/api/generate?word=${this.input}`
       axios
         .get(api)
         .then(response => {

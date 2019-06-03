@@ -77,7 +77,7 @@ export default {
 
     ner () {
       this.entities = {}
-      const api = `https://morph.smc.org.in/api/analyse`
+      const api = `/api/analyse`
       return axios
         .post(api, {
           text: this.input

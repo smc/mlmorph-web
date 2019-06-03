@@ -46,7 +46,7 @@ export default {
       this.spellcheck(this.input)
     },
     spellcheck () {
-      const api = `https://morph.smc.org.in/api/spellcheck`
+      const api = `/api/spellcheck`
       axios
         .post(api, {
           text: this.input
