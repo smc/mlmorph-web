@@ -4,12 +4,7 @@
     <v-layout row wrap>
       <v-flex xs12>
         <h2 class="headline">Morphology generator</h2>
-        <v-text-field
-          v-model="input"
-          label="Enter morphemes"
-          auto-grow
-          :value="input"
-        ></v-text-field>
+        <v-text-field v-model="input" label="Enter morphemes" auto-grow :value="input"></v-text-field>
         <v-btn color="primary" @click="generate">generate</v-btn>
         <h2 v-if="results&&results.length>0">{{results[0]}}</h2>
       </v-flex>
@@ -18,24 +13,25 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "Generator",
+  name: 'Generator',
   data: () => ({
-    input: "",
-    results: ""
+    input: '',
+    results: ''
   }),
   methods: {
-    generate() {
-      const api = `https://morph.smc.org.in/api/generate?word=${this.input}`;
-      axios.get(api)
+    generate () {
+      const api = `https://morph.smc.org.in/api/generate?word=${this.input}`
+      axios
+        .get(api)
         .then(response => {
-          this.results = response.data.result;
+          this.results = response.data.result
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>

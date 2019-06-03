@@ -34,30 +34,30 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "Spellchecker",
+  name: 'Spellchecker',
   data: () => ({
-    input: "",
+    input: '',
     results: {}
   }),
   methods: {
-    update() {
-      this.spellcheck(this.input);
+    update () {
+      this.spellcheck(this.input)
     },
-    spellcheck() {
-      const api = `https://morph.smc.org.in/api/spellcheck`;
+    spellcheck () {
+      const api = `https://morph.smc.org.in/api/spellcheck`
       axios
         .post(api, {
           text: this.input
         })
         .then(response => {
-          this.results = response.data;
+          this.results = response.data
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>

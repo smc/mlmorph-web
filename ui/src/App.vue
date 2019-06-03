@@ -31,21 +31,21 @@
 
 <script>
 export default {
-  name: "app",
+  name: 'app',
   data: () => ({
-    appName:"Mlmorph",
+    appName: 'Mlmorph',
     items: [
-      { title: "Analyser", icon: "apps", href: "/" },
-      { title: "Generator", icon: "apps", href: "/generator" },
-      { title: "Named entity recognition", icon: "apps", href: "/ner" },
-      { title: "Spellchecker", icon: "apps", href: "/spellcheck" },
-      { title: "Number spellout", icon: "apps", href: "/number" },
-      { title: "About", icon: "question_answer", href: "/about" },
-      { title: "Code", icon: "code", href: "https://gitlab.com/smc/mlmorph" }
+      { title: 'Analyser', icon: 'apps', href: '/' },
+      { title: 'Generator', icon: 'apps', href: '/generator' },
+      { title: 'Named entity recognition', icon: 'apps', href: '/ner' },
+      { title: 'Spellchecker', icon: 'apps', href: '/spellcheck' },
+      { title: 'Number spellout', icon: 'apps', href: '/number' },
+      { title: 'About', icon: 'question_answer', href: '/about' },
+      { title: 'Code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
     ],
     drawer: null
   })
-};
+}
 </script>
 
 <style>

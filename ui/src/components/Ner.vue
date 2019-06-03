@@ -33,64 +33,64 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "NER",
+  name: 'NER',
   data: () => ({
-    input: "",
-    entities:{}
+    input: '',
+    entities: {}
   }),
   methods: {
-    process(result) {
-      var entities = {};
-      let tokens = this.input.split(/\s+/);
+    process (result) {
+      var entities = {}
+      let tokens = this.input.split(/\s+/)
       for (let i = 0; i < tokens.length; i++) {
-        let key = tokens[i];
-        let values = result[key];
-        if (!values) continue;
+        let key = tokens[i]
+        let values = result[key]
+        if (!values) continue
         for (let i = 0; i < values.length; i++) {
-          let entity = this.findEntity(values[i]);
+          let entity = this.findEntity(values[i])
           if (entity.length > 1) {
-            entities[entity] = {};
+            entities[entity] = {}
             this.getWikiInfo(entity).then(pageInfo => {
-              entities[entity] = pageInfo;
-            });
+              entities[entity] = pageInfo
+            })
           }
         }
       }
-      return entities;
+      return entities
     },
-    getWikiInfo(title) {
+    getWikiInfo (title) {
       return axios
         .get(`https://ml.wikipedia.org/api/rest_v1/page/summary/${title}`)
-        .then(res => res.data);
+        .then(res => res.data)
     },
-    findEntity(result) {
-      let morphemes = result.morphemes;
+    findEntity (result) {
+      let morphemes = result.morphemes
       for (let i = 0; i < morphemes.length; i++) {
-        let morpheme = morphemes[i];
-        let tags = morpheme.pos;
-        if (tags[0] === "np") return morpheme.root;
+        let morpheme = morphemes[i]
+        let tags = morpheme.pos
+        if (tags[0] === 'np') return morpheme.root
       }
-      return false;
+      return false
     },
 
-    ner() {
-      this.entities = {};
-      const api = `https://morph.smc.org.in/api/analyse`;
+    ner () {
+      this.entities = {}
+      const api = `https://morph.smc.org.in/api/analyse`
       return axios
         .post(api, {
           text: this.input
         })
         .then(response => {
-          this.entities = this.process(response.data.result);
+          this.entities = this.process(response.data.result)
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>
 
 <style>

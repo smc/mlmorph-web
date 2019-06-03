@@ -62,27 +62,27 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
-  name: "Analyser",
+  name: 'Analyser',
   data: () => ({
-    input: "",
-    results: ""
+    input: '',
+    results: ''
   }),
   methods: {
-    analyse() {
-      const api = `https://morph.smc.org.in/api/analyse`;
+    analyse () {
+      const api = `/api/analyse`
       axios
         .post(api, {
           text: this.input
         })
         .then(response => {
-          this.results = response.data.result;
+          this.results = response.data.result
         })
         .catch(error => {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
   }
-};
+}
 </script>
