@@ -25,7 +25,7 @@
                 class="d-flex analysis ma-2"
                 color="transparent"
                 v-if="aindex==0"
-                :elevation="1"
+                :elevation="0"
                 :key="aindex"
                 v-for="(analysis, aindex) in result"
               >
@@ -48,7 +48,7 @@
                       v-for="(pos, posindex) in morpheme.pos"
                     >
                       <v-icon>code</v-icon>
-                      {{pos}}
+                      {{getTag(pos).tag}}
                     </v-chip>
                   </v-layout>
                 </v-sheet>
@@ -63,6 +63,7 @@
 
 <script>
 import axios from 'axios'
+import tags from '../tags.json'
 export default {
   name: 'Analyser',
   data: () => ({
@@ -70,6 +71,9 @@ export default {
     results: ''
   }),
   methods: {
+    getTag (pos) {
+      return tags.find(item => item.id === pos) || {tag: pos}
+    },
     analyse () {
       const api = `/api/analyse`
       axios
