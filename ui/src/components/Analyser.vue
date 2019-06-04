@@ -9,54 +9,47 @@
         <v-btn color="primary" @click="analyse">Analyse</v-btn>
       </v-flex>
     </v-layout>
-    <v-sheet :elevation="1">
-      <table class="v-datatable v-table theme--light" v-if="results && Object.keys(results).length">
-        <thead>
-          <tr>
-            <th class="text-xs-left">Word</th>
-            <th class="text-xs-left">Analysis</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr :key="key" v-if="key.trim()" v-for="(result, key) in results">
-            <td class="text-xs-left">{{ key }}</td>
-            <td class="text-xs-left">
-              <v-sheet
-                class="d-flex analysis ma-2"
+    <v-sheet :elevation="0" v-if="results && Object.keys(results).length">
+      <v-card class="ma-2" :key="key" v-if="key.trim() && result.length" v-for="(result, key) in results">
+        <v-card-title primary-title class="pa-1">
+          <div>
+            <h4 class="word ma-1 pa-2 text-xs-left">{{ key }}</h4>
+            <v-sheet
+                class="d-flex analysis"
                 color="transparent"
                 v-if="aindex==0"
                 :elevation="0"
                 :key="aindex"
                 v-for="(analysis, aindex) in result"
               >
-                <v-sheet
-                  class="morpheme pa-2 ma-2 column"
-                  :elevation="3"
-                  :key="mindex"
-                  v-for="(morpheme, mindex) in analysis.morphemes"
-                >
-                  <v-layout column fill-height>
-                    <v-chip class="text-xs-left" color="primary" text-color="white">
-                      <v-icon>bookmark_border</v-icon>
-                      {{ morpheme.root }}
-                    </v-chip>
-                    <v-chip
-                      class="text-xs-left"
-                      color="teal"
-                      text-color="white"
-                      :key="posindex"
-                      v-for="(pos, posindex) in morpheme.pos"
-                    >
-                      <v-icon>code</v-icon>
-                      {{getTag(pos).tag}}
-                    </v-chip>
-                  </v-layout>
-                </v-sheet>
-              </v-sheet>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                <v-card-title primary-title class="align-start pa-1">
+                  <v-card
+                    class="morpheme column ma-2"
+                    :elevation="3"
+                    :key="mindex"
+                    v-for="(morpheme, mindex) in analysis.morphemes"
+                  >
+                    <v-layout column fill-height>
+                      <v-chip class="text-xs-left root" color="primary" text-color="white">
+                        <v-icon>bookmark_border</v-icon>
+                        {{ morpheme.root }}
+                      </v-chip>
+                      <v-chip
+                        class="text-xs-left"
+                        color="white"
+                        :key="posindex"
+                        v-for="(pos, posindex) in morpheme.pos"
+                      >
+                        <v-icon>code</v-icon>
+                        {{getTag(pos).tag}}
+                      </v-chip>
+                    </v-layout>
+                  </v-card>
+                </v-card-title>
+            </v-sheet>
+          </div>
+        </v-card-title>
+      </v-card>
     </v-sheet>
   </v-container>
 </template>
@@ -72,10 +65,10 @@ export default {
   }),
   methods: {
     getTag (pos) {
-      return tags.find(item => item.id === pos) || {tag: pos}
+      return tags.find(item => item.id === pos) || { tag: pos }
     },
     analyse () {
-      const api = `/api/analyse`
+      const api = `https://morph.smc.org.in/api/analyse`
       axios
         .post(api, {
           text: this.input
@@ -90,3 +83,9 @@ export default {
   }
 }
 </script>
+<style>
+.word,
+.root {
+  font-size: 1.2em;
+}
+</style>
