@@ -11,6 +11,7 @@
         width="30%"
         :elevation="3"
         :key="title"
+        v-if="pageInfo.description||pageInfo.extract"
         v-for="(pageInfo, title) in entities"
       >
         <v-img v-if="pageInfo.thumbnail" :src="pageInfo.thumbnail.source" aspect-ratio="2.75"></v-img>
@@ -29,6 +30,16 @@
         </v-card-actions>
       </v-card>
     </v-layout>
+     <v-footer absolute class="pa-3">
+      <p class="text-sm-left text-md-left">
+        For more details on see the article
+        <a
+          href="https://thottingal.in/blog/2019/03/10/malayalam-named-entity-recognition-using-morphology-analyser/"
+        >
+          Malayalam Named Entity Recognition using morphology analyser
+        </a>
+      </p>
+    </v-footer>
   </v-container>
 </template>
 
@@ -56,6 +67,8 @@ export default {
               entities[entity] = pageInfo
             })
           }
+          // For now, take only first analysis
+          if (i >= 1) break
         }
       }
       return entities
@@ -70,7 +83,7 @@ export default {
       for (let i = 0; i < morphemes.length; i++) {
         let morpheme = morphemes[i]
         let tags = morpheme.pos
-        if (tags[0] === 'np') return morpheme.root
+        if (tags[0] === 'np' || tags[0] === 'n') return morpheme.root
       }
       return false
     },
