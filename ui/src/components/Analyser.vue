@@ -68,7 +68,7 @@ export default {
       return tags.find(item => item.id === pos) || { tag: pos }
     },
     analyse () {
-      const api = `https://morph.smc.org.in/api/analyse`
+      const api = `${process.env.BASE_URL}/api/analyse`
       axios
         .post(api, {
           text: this.input

@@ -77,7 +77,7 @@ export default {
 
     ner () {
       this.entities = {}
-      const api = `/api/analyse`
+      const api = `${process.env.BASE_URL}/api/analyse`
       return axios
         .post(api, {
           text: this.input

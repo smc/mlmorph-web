@@ -22,7 +22,7 @@ export default {
   }),
   methods: {
     generate () {
-      const api = `/api/generate?word=${this.input}`
+      const api = `${process.env.BASE_URL}/api/generate?word=${this.input}`
       axios
         .get(api)
         .then(response => {

@@ -83,7 +83,7 @@ export default {
       this.spellout(numberMorphemes)
     },
     spellout (numberMorphemes) {
-      const api = `/api/generate?word=${numberMorphemes}`
+      const api = `${process.env.BASE_URL}/api/generate?word=${numberMorphemes}`
       axios
         .get(api)
         .then(response => {
