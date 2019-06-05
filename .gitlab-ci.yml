@@ -4,7 +4,6 @@ pages: # the job must be named pages
   script:
     - npm ci
     - npm run build
-    - mv public public-vue # GitLab Pages hooks on the public folder
     - mv dist public # rename the dist folder (result of npm run build)
   artifacts:
     paths:
