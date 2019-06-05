@@ -1,8 +1,8 @@
 {
-  "name": "ui",
+  "name": "mlmorph",
   "version": "1.0.0",
   "private": true,
-  "description": "A Vue.js project",
+  "description": "Mlmorph web interface",
   "author": "Santhosh Thottingal <santhosh.thottingal@gmail.com>",
   "scripts": {
     "build": "node build/build.js",
