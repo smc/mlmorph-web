@@ -1,11 +1,11 @@
 
 <template>
   <v-container fluid grid-list-md>
-    <h2>Spellchecker</h2>
+    <h2>{{$i18n('spell_spellchecker')}}</h2>
     <v-textarea
       name="spell_input"
       v-model="input"
-      label="Enter text to spellcheck"
+      :label="$i18n('spell_input_label')"
       auto-grow
       :value="input"
       @input="update"
@@ -13,8 +13,8 @@
     <table class="v-datatable v-table theme--light" v-if="results && Object.keys(results).length">
       <thead>
         <tr>
-          <th class="text-xs-left">Misspelled word</th>
-          <th class="text-xs-left">Suggestions</th>
+          <th class="text-xs-left">{{$i18n('spell_wrong_word')}}</th>
+          <th class="text-xs-left">{{$i18n('spell_suggestions')}}</th>
         </tr>
       </thead>
       <tbody>

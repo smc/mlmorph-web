@@ -3,7 +3,7 @@
     <v-navigation-drawer fixed v-model="drawer" app>
       <h1>{{appName}}</h1>
 
-      <h3>Malayalam morphology analyser</h3>
+      <h3>{{$i18n('app_desc')}}</h3>
       <v-divider></v-divider>
       <v-list dense class="pt-0">
         <v-list-tile v-for="item in items" :key="item.title" :href="item.href">
@@ -43,8 +43,15 @@ export default {
       { title: 'About', icon: 'question_answer', href: '/about' },
       { title: 'Code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
     ],
-    drawer: null
-  })
+    drawer: null,
+    lang: null
+  }),
+  watch: {
+    lang: function (val) {
+      console.log(val)
+      this.setLocale(val)
+    }
+  }
 }
 </script>
 
