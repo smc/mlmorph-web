@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <v-navigation-drawer fixed v-model="drawer" app>
-      <h1>{{appName}}</h1>
+      <h1>{{$i18n(appName)}}</h1>
 
       <h3>{{$i18n('app_desc')}}</h3>
       <v-divider></v-divider>
@@ -12,7 +12,7 @@
           </v-list-tile-action>
 
           <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            <v-list-tile-title>{{$i18n(item.title)}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -20,7 +20,7 @@
 
     <v-toolbar color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="white--text"></v-toolbar-side-icon>
-      <v-toolbar-title href="/" class="white--text">{{appName}}</v-toolbar-title>
+      <v-toolbar-title href="/" class="white--text">{{$i18n(appName)}}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content id="content">
@@ -31,24 +31,23 @@
 
 <script>
 export default {
-  name: 'app',
+  name: 'Mlmorph',
   data: () => ({
-    appName: 'Mlmorph',
+    appName: 'app_name',
     items: [
-      { title: 'Analyser', icon: 'apps', href: '/' },
-      { title: 'Generator', icon: 'apps', href: '/generator' },
-      { title: 'Named entity recognition', icon: 'apps', href: '/ner' },
-      { title: 'Spellchecker', icon: 'apps', href: '/spellcheck' },
-      { title: 'Number spellout', icon: 'apps', href: '/number' },
-      { title: 'About', icon: 'question_answer', href: '/about' },
-      { title: 'Code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
+      { title: 'analyser_title', icon: 'apps', href: '/' },
+      { title: 'generator_title', icon: 'apps', href: '/generator' },
+      { title: 'ner_title', icon: 'apps', href: '/ner' },
+      { title: 'spellchecker_title', icon: 'apps', href: '/spellcheck' },
+      { title: 'numberspellout_title', icon: 'apps', href: '/number' },
+      { title: 'app_about', icon: 'question_answer', href: '/about' },
+      { title: 'app_code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
     ],
     drawer: null,
     lang: null
   }),
   watch: {
     lang: function (val) {
-      console.log(val)
       this.setLocale(val)
     }
   }

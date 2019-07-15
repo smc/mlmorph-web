@@ -1,7 +1,15 @@
 {
     "app_desc": "മലയാളം മോർഫോളജി അനലൈസർ",
+    "app_name": "Mlmorph",
+    "app_about": "ഇതിനെപ്പറ്റി",
+    "app_code": "കോഡ്",
     "spell_spellchecker": "അക്ഷരത്തെറ്റ് പരിശോധന",
     "spell_suggestions": "നിർദ്ദേശങ്ങൾ",
     "spell_wrong_word": "തെറ്റായ വാക്ക്",
-    "spell_input_label": "അക്ഷരത്തെറ്റ് പരിശോധിക്കാനുള്ള വാചകങ്ങൾ കൊടുക്കുക"
+    "spell_input_label": "അക്ഷരത്തെറ്റ് പരിശോധിക്കാനുള്ള വാചകങ്ങൾ കൊടുക്കുക",
+    "analyser_title": "വിശകലനം",
+    "generator_title": "സംയോജനം",
+    "ner_title": "സംജ്ഞകൾ കണ്ടെത്തുക",
+    "spellchecker_title": "അക്ഷരത്തെറ്റ് പരിശോധന",
+    "numberspellout_title": "സംഖ്യകൾ വാക്കിൽ"
 }

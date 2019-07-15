@@ -1,7 +1,15 @@
 {
     "app_desc": "Malayalam morphology analyser",
+    "app_about": "About",
+    "app_name": "Mlmorph",
+    "app_code": "Code",
     "spell_spellchecker": "Spellchecker",
     "spell_suggestions": "Suggestions",
     "spell_wrong_word": "Misspelled word",
-    "spell_input_label": "Enter text to spellcheck"
+    "spell_input_label": "Enter text to spellcheck",
+    "analyser_title": "Analyser",
+    "generator_title": "Generator",
+    "ner_title": "Named entity recognition",
+    "spellchecker_title": "Spellchecker",
+    "numberspellout_title": "Number spellout"
 }
