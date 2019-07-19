@@ -6,7 +6,7 @@
       <h3>{{$i18n('app_desc')}}</h3>
       <v-divider></v-divider>
       <v-list dense class="pt-0">
-        <v-list-tile v-for="item in items" :key="item.title" :href="item.href">
+        <v-list-tile v-for="item in items" :key="item.title" :to="item.href">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
