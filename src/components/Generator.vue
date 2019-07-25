@@ -17,7 +17,7 @@ import axios from 'axios'
 export default {
   name: 'Generator',
   data: () => ({
-    input: '',
+    input: 'പഞ്ചസാര<n><adj>മണൽ<n><adj>തരി<n><pl><locative>ഉം<cnj>ആണ്<aff>',
     results: ''
   }),
   methods: {

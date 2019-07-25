@@ -60,7 +60,7 @@ import tags from '../tags.json'
 export default {
   name: 'Analyser',
   data: () => ({
-    input: '',
+    input: 'ഇന്നലെയും മലപ്പുറത്ത് നല്ല മഴ പെയ്തിരുന്നു. കുട്ടികൾ സ്കൂളിൽ പോയില്ല',
     results: ''
   }),
   methods: {
