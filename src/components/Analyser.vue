@@ -9,8 +9,8 @@
         <v-btn color="primary" @click="analyse">Analyse</v-btn>
       </v-flex>
     </v-layout>
-    <v-sheet :elevation="0" v-if="results && Object.keys(results).length">
-      <v-card class="ma-2" :key="key" v-if="key.trim() && result.length" v-for="(result, key) in results">
+      <v-layout row wrap :elevation="0" v-if="results && Object.keys(results).length">
+      <v-card class="ma-2" max-width="344" :key="key" v-if="key.trim() && result.length" v-for="(result, key) in results">
         <v-card-title primary-title class="pa-1">
           <div>
             <h4 class="word ma-1 pa-2 text-xs-left">{{ key }}</h4>
@@ -50,7 +50,7 @@
           </div>
         </v-card-title>
       </v-card>
-    </v-sheet>
+    </v-layout>
   </v-container>
 </template>
 
