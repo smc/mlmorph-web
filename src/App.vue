@@ -18,10 +18,11 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar color="primary">
+    <v-toolbar app color="primary">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="white--text"></v-toolbar-side-icon>
       <v-toolbar-title href="/" class="white--text">{{$i18n(appName)}}</v-toolbar-title>
       <v-spacer></v-spacer>
+      <LanguageSelector @changeLocale="onChangeLocale"/>
     </v-toolbar>
     <v-content id="content">
       <router-view/>
@@ -30,8 +31,13 @@
 </template>
 
 <script>
+import LanguageSelector from './components/LanguageSelector'
+
 export default {
   name: 'Mlmorph',
+  components: {
+    LanguageSelector
+  },
   data: () => ({
     appName: 'app_name',
     items: [
@@ -43,12 +49,12 @@ export default {
       { title: 'app_about', icon: 'question_answer', href: '/about' },
       { title: 'app_code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
     ],
-    drawer: null,
-    lang: null
+    drawer: null
   }),
-  watch: {
-    lang: function (val) {
-      this.setLocale(val)
+  methods: {
+    onChangeLocale: function (locale) {
+      console.log(locale)
+      this.i18n.locale = locale
     }
   }
 }
