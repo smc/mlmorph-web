@@ -6,8 +6,7 @@
         :items="locales"
         item-text="autonym"
         item-value="code"
-        label="Language"
-        prepend-icon="translate"
+        prepend-icon="mdi-translate"
         @change="onChange"
     ></v-select>
     </v-flex>

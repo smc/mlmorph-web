@@ -1,27 +1,31 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import Vuetify from 'vuetify'
+import App from './App.vue'
+import vuetify from './plugins/vuetify';
 import i18n from 'vue-banana-i18n'
-import 'vuetify/dist/vuetify.min.css'
-import App from './App'
 import router from './router'
-import ml from './i18n/ml.json'
-import en from './i18n/en.json'
 
-Vue.use(Vuetify)
+const locale = navigator.language.split('-')[0] || 'en'
+const finalFallback = 'en'
+const messages = {
+  [finalFallback]: require(`@/assets/i18n/${finalFallback}.json`),
+}
+
+try {
+  messages[locale] = require(`@/assets/i18n/${locale}.json`)
+} catch {
+  // Not localised. We have loaded fallback locale.
+}
 
 Vue.use(i18n, {
-  locale: navigator.language || 'en',
-  messages: { en, ml }
+  locale,
+  finalFallback: 'en',
+  messages
 })
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
-})
+  vuetify,
+  render: h => h(App)
+}).$mount('#app')

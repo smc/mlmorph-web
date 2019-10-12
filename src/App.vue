@@ -5,25 +5,42 @@
 
       <h3>{{$i18n('app_desc')}}</h3>
       <v-divider></v-divider>
-      <v-list dense class="pt-0">
-        <v-list-tile v-for="item in items" :key="item.title" :to="item.href">
-          <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
-
-          <v-list-tile-content>
-            <v-list-tile-title>{{$i18n(item.title)}}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+       <v-list
+        dense
+        nav
+      >
+        <v-list-item-group
+          color="primary"
+        >
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            :to="item.href"
+          >
+            <v-list-item-icon>
+              <v-icon v-text="item.icon" />
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-text="$i18n(item.title)" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar app color="primary">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer" class="white--text"></v-toolbar-side-icon>
+     <v-app-bar
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
+            color="primary"
+      app
+      hide-on-scroll
+      elevate-on-scroll
+      class="pa-0"
+    >
+      <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title href="/" class="white--text">{{$i18n(appName)}}</v-toolbar-title>
       <v-spacer></v-spacer>
       <LanguageSelector @changeLocale="onChangeLocale"/>
-    </v-toolbar>
+    </v-app-bar>
     <v-content id="content">
       <router-view/>
     </v-content>
@@ -41,19 +58,18 @@ export default {
   data: () => ({
     appName: 'app_name',
     items: [
-      { title: 'analyser_title', icon: 'apps', href: '/' },
-      { title: 'generator_title', icon: 'apps', href: '/generator' },
-      { title: 'ner_title', icon: 'apps', href: '/ner' },
-      { title: 'spellchecker_title', icon: 'apps', href: '/spellcheck' },
-      { title: 'numberspellout_title', icon: 'apps', href: '/number' },
-      { title: 'app_about', icon: 'question_answer', href: '/about' },
-      { title: 'app_code', icon: 'code', href: 'https://gitlab.com/smc/mlmorph' }
+      { title: 'analyser_title', icon: 'mdi-home', href: '/' },
+      { title: 'generator_title', icon: 'mdi-apps', href: '/generator' },
+      { title: 'ner_title', icon: 'mdi-apps', href: '/ner' },
+      { title: 'spellchecker_title', icon: 'mdi-apps', href: '/spellcheck' },
+      { title: 'numberspellout_title', icon: 'mdi-apps', href: '/number' },
+      { title: 'app_about', icon: 'mdi-information', href: '/about' },
+      { title: 'app_code', icon: 'mdi-code-tags', href: 'https://gitlab.com/smc/mlmorph' }
     ],
     drawer: null
   }),
   methods: {
     onChangeLocale: function (locale) {
-      console.log(locale)
       this.i18n.locale = locale
     }
   }

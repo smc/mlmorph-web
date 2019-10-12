@@ -9,7 +9,7 @@ from mlmorph import Generator, Analyser
 from mlmorph_spellchecker import spellcheck, getSuggestions
 
 app = Flask(__name__,
-    static_folder = "./dist/static",
+    static_folder = "./dist/",
     template_folder = "./dist")
 
 generator = Generator()

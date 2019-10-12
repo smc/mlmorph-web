@@ -31,16 +31,16 @@
                   >
                     <v-layout column fill-height>
                       <v-chip class="text-xs-left root" color="primary" text-color="white">
-                        <v-icon>bookmark_border</v-icon>
+                        <v-icon>mdi-bookmark</v-icon>
                         {{ morpheme.root }}
                       </v-chip>
                       <v-chip
-                        class="text-xs-left"
+                        class="text-xs-left ma-1"
                         color="white"
                         :key="posindex"
                         v-for="(pos, posindex) in morpheme.pos"
                       >
-                        <v-icon>code</v-icon>
+                        <v-icon>mdi-code-tags</v-icon>
                         {{getTag(pos).tag}}
                       </v-chip>
                     </v-layout>
@@ -68,7 +68,7 @@ export default {
       return tags.find(item => item.id === pos) || { tag: pos }
     },
     analyse () {
-      const api = `${process.env.BASE_URL}/api/analyse`
+      const api = `/api/analyse`
       axios
         .post(api, {
           text: this.input
