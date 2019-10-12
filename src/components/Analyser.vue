@@ -9,83 +9,79 @@
         <v-btn color="primary" @click="analyse">Analyse</v-btn>
       </v-flex>
     </v-layout>
-      <v-layout row wrap :elevation="0" v-if="results && Object.keys(results).length">
-      <v-card class="ma-2" max-width="344" :key="key" v-if="key.trim() && result.length" v-for="(result, key) in results">
-        <v-card-title primary-title class="pa-1">
-          <div>
-            <h4 class="word ma-1 pa-2 text-xs-left">{{ key }}</h4>
-            <v-sheet
-                class="d-flex analysis"
-                color="transparent"
-                v-if="aindex==0"
-                :elevation="0"
-                :key="aindex"
-                v-for="(analysis, aindex) in result"
-              >
-                <v-card-title primary-title class="align-start pa-1">
-                  <v-card
-                    class="morpheme column ma-2"
-                    :elevation="3"
-                    :key="mindex"
-                    v-for="(morpheme, mindex) in analysis.morphemes"
-                  >
-                    <v-layout column fill-height>
-                      <v-chip class="text-xs-left root" color="primary" text-color="white">
-                        <v-icon>mdi-bookmark</v-icon>
-                        {{ morpheme.root }}
-                      </v-chip>
-                      <v-chip
-                        class="text-xs-left ma-1"
-                        color="white"
-                        :key="posindex"
-                        v-for="(pos, posindex) in morpheme.pos"
-                      >
-                        <v-icon>mdi-code-tags</v-icon>
-                        {{getTag(pos).tag}}
-                      </v-chip>
-                    </v-layout>
-                  </v-card>
-                </v-card-title>
-            </v-sheet>
-          </div>
-        </v-card-title>
-      </v-card>
-    </v-layout>
+    <v-flex xs12 >
+      <v-sheet elevation="1" class="my-2" :key="word" v-for="(result, word) in analysis">
+        <v-flex xs3 sm3 md3 lg3 class="title text-left px-2 mb-2">{{ word }}</v-flex>
+        <v-flex md9 lg9 v-if="result">
+          <v-row
+            class="d-flex analysis mx-4"
+            v-if="aindex==0"
+            :key="aindex"
+            v-for="(analysis, aindex) in result"
+          >
+            <v-card
+              class="morpheme ma-2 py-0"
+              tile
+              flat
+              outlined
+              :key="mindex"
+              v-for="(morpheme, mindex) in analysis.morphemes"
+            >
+              <v-card-title
+                class="grey lighten-3 pa-1 text-left body-1 root mx-0"
+              >{{ morpheme.root }}</v-card-title>
+              <v-list dense>
+                <v-list-item-group>
+                  <v-list-item v-for="(pos, posindex) in morpheme.pos" :key="posindex">
+                    <v-list-item-icon>
+                      <v-icon>mdi-tag-outline</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-content>
+                      <v-list-item-title class="text-left" v-text="getTag(pos).tag"></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-card>
+          </v-row>
+        </v-flex>
+      </v-sheet>
+    </v-flex>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios'
-import tags from '../tags.json'
+import axios from "axios";
+import tags from "../tags.json";
 export default {
-  name: 'Analyser',
+  name: "Analyser",
   data: () => ({
-    input: 'ഇന്നലെയും മലപ്പുറത്ത് നല്ല മഴ പെയ്തിരുന്നു. കുട്ടികൾ സ്കൂളിൽ പോയില്ല',
-    results: ''
+    input:
+      "ഇന്നലെയും മലപ്പുറത്ത് നല്ല മഴ പെയ്തിരുന്നു. കുട്ടികൾ സ്കൂളിൽ പോയില്ല",
+    analysis: {}
   }),
   methods: {
-    getTag (pos) {
-      return tags.find(item => item.id === pos) || { tag: pos }
+    getTag(pos) {
+      return tags.find(item => item.id === pos) || { tag: pos };
     },
-    analyse () {
-      const api = `/api/analyse`
+    analyse() {
+      const api = `/api/analyse`;
+      const words = this.input.split(" ");
+      this.analysis={};
       axios
         .post(api, {
           text: this.input
         })
         .then(response => {
-          this.results = response.data.result
+          const results = response.data.result;
+          for (let i = 0; i < words.length; i++) {
+            this.$set(this.analysis, words[i], results[words[i]]);
+          }
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   }
-}
+};
 </script>
-<style>
-.word,
-.root {
-  font-size: 1.2em;
-}
-</style>
