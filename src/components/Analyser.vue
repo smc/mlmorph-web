@@ -1,21 +1,32 @@
-
 <template>
   <v-container fluid grid-list-md>
     <v-layout row wrap>
       <v-flex xs12>
         <h2 class="headline">Morphology analyser</h2>
-        <v-textarea v-model="input" label="Enter text" auto-grow :value="input"></v-textarea>
+        <v-textarea
+          v-model="input"
+          label="Enter text"
+          auto-grow
+          :value="input"
+        ></v-textarea>
 
         <v-btn color="primary" @click="analyse">Analyse</v-btn>
       </v-flex>
     </v-layout>
-    <v-flex xs12 >
-      <v-sheet elevation="1" class="my-2" :key="word" v-for="(result, word) in analysis">
-        <v-flex xs3 sm3 md3 lg3 class="title text-left px-2 mb-2">{{ word }}</v-flex>
+    <v-flex xs12>
+      <v-sheet
+        elevation="1"
+        class="my-2"
+        :key="word"
+        v-for="(result, word) in analysis"
+      >
+        <v-flex xs3 sm3 md3 lg3 class="title text-left px-2 mb-2">{{
+          word
+        }}</v-flex>
         <v-flex md9 lg9 v-if="result">
           <v-row
             class="d-flex analysis mx-4"
-            v-if="aindex==0"
+            v-if="aindex == 0"
             :key="aindex"
             v-for="(analysis, aindex) in result"
           >
@@ -29,15 +40,22 @@
             >
               <v-card-title
                 class="grey lighten-3 pa-1 text-left body-1 root mx-0"
-              >{{ morpheme.root }}</v-card-title>
+                >{{ morpheme.root }}</v-card-title
+              >
               <v-list dense>
                 <v-list-item-group>
-                  <v-list-item v-for="(pos, posindex) in morpheme.pos" :key="posindex">
+                  <v-list-item
+                    v-for="(pos, posindex) in morpheme.pos"
+                    :key="posindex"
+                  >
                     <v-list-item-icon>
                       <v-icon>mdi-tag-outline</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title class="text-left" v-text="getTag(pos).tag"></v-list-item-title>
+                      <v-list-item-title
+                        class="text-left"
+                        v-text="getTag(pos).tag"
+                      ></v-list-item-title>
                     </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
@@ -67,7 +85,7 @@ export default {
     analyse() {
       const api = `/api/analyse`;
       const words = this.input.split(" ");
-      this.analysis={};
+      this.analysis = {};
       axios
         .post(api, {
           text: this.input
