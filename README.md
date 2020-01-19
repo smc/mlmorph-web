@@ -41,7 +41,7 @@ Using Docker
 
 ```
 docker build --tag=mlmorphweb .
-sudo docker run -p 4000:80 mlmorphweb
+sudo docker run -e PORT=80 -p 4000:80 mlmorphweb
 ```
 
 And open browser at localhost:4000
