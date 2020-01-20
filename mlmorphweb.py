@@ -2,6 +2,7 @@ import sys
 import regex
 import os
 from flask import Flask, jsonify, render_template, request
+from flask_swagger import swagger
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
@@ -22,6 +23,22 @@ def index(path):
 
 @app.route("/api/analyse", methods=['POST', 'GET'])
 def do_analyse():
+    """
+    Analyse the given text
+    ---
+    tags:
+        - analysis
+    consumes:
+        - application/json
+    produces:
+        - application/json
+    parameters:
+        - name: text
+          in: body
+          description: The text to be analysed. Can be multiple words.
+          type: string
+          required: true
+    """
     text = None
     analyse_results = {}
     if request.method == 'POST':
@@ -49,6 +66,32 @@ def do_analyse():
 
 @app.route("/api/generate", methods=['GET'])
 def do_generate():
+    """
+    Generate a word from given morpheme sequence
+    ---
+    tags:
+        - generate
+    consumes:
+        - application/json
+    produces:
+        - application/json
+    parameters:
+        - name: word
+          in: query
+          description: The morpheme string
+          type: string
+          required: true
+        - name: type
+          in: query
+          description: The word POS
+          type: string
+          required: false
+        - name: infl
+          in: query
+          description: The inflection
+          type: string
+          required: false
+    """
     generate_results = []
     word = request.args.get('word')
     wordtype = request.args.get('type')
@@ -68,6 +111,22 @@ def do_generate():
 
 @app.route("/api/spellcheck", methods=['POST', 'GET'])
 def do_spellcheck():
+    """
+    Spellcheck the words given text
+    ---
+    tags:
+        - spellcheck
+    consumes:
+        - application/json
+    produces:
+        - application/json
+    parameters:
+        - name: text
+          in: body
+          description: The morpheme string
+          type: string
+          required: true
+    """
     result = {}
     if request.method == 'POST':
         text = request.json.get('text')
@@ -85,6 +144,13 @@ def do_spellcheck():
             suggestions = getSuggestions(word, analyser)
         result[word] = {'correct': isCorrect, 'suggestions': suggestions}
     return jsonify(result)
+
+@app.route("/spec")
+def spec():
+    swag = swagger(app)
+    swag['info']['version'] = "1.0"
+    swag['info']['title'] = "mlmorph web api"
+    return jsonify(swag)
 
 
 if __name__ == "__main__":
