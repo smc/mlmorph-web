@@ -1,6 +1,6 @@
 Flask
 regex
 gunicorn
-mlmorph>=1.0.7
+mlmorph>=1.0.8
 mlmorph-spellchecker>=1.0.6
 flask-swagger
