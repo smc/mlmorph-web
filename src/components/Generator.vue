@@ -10,6 +10,10 @@
           :value="input"
         ></v-text-field>
         <v-btn color="primary" @click="generate">generate</v-btn>
+        <v-progress-linear
+          :active="loading"
+          :indeterminate="true"
+        ></v-progress-linear>
         <h2 v-if="results && results.length > 0">{{ results[0] }}</h2>
       </v-flex>
     </v-layout>
@@ -22,7 +26,8 @@ export default {
   name: "Generator",
   data: () => ({
     input: "പഞ്ചസാര<n><adj>മണൽ<n><adj>തരി<n><pl><locative>ഉം<cnj>ആണ്<aff>",
-    results: ""
+    results: "",
+    loading: false
   }),
   methods: {
     generate() {
@@ -31,9 +36,11 @@ export default {
         .get(api)
         .then(response => {
           this.results = response.data.result;
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);
+          this.loading = false;
         });
     }
   }

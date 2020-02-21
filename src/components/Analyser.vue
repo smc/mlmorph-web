@@ -11,6 +11,10 @@
         ></v-textarea>
 
         <v-btn color="primary" @click="analyse">Analyse</v-btn>
+        <v-progress-linear
+          :active="loading"
+          :indeterminate="true"
+        ></v-progress-linear>
       </v-flex>
     </v-layout>
     <v-flex xs12>
@@ -76,7 +80,8 @@ export default {
   data: () => ({
     input:
       "ഇന്നലെയും മലപ്പുറത്ത് നല്ല മഴ പെയ്തിരുന്നു. കുട്ടികൾ സ്കൂളിൽ പോയില്ല",
-    analysis: {}
+    analysis: {},
+    loading: false
   }),
   methods: {
     getTag(pos) {
@@ -86,6 +91,7 @@ export default {
       const api = `/api/analyse`;
       const words = this.input.split(" ");
       this.analysis = {};
+      this.loading = true;
       axios
         .post(api, {
           text: this.input
@@ -95,9 +101,11 @@ export default {
           for (let i = 0; i < words.length; i++) {
             this.$set(this.analysis, words[i], results[words[i]]);
           }
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);
+          this.loading = false;
         });
     }
   }
