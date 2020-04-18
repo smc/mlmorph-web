@@ -1,22 +1,13 @@
 <template>
   <v-app light>
     <v-navigation-drawer fixed v-model="drawer" app>
-      <h1>{{$i18n(appName)}}</h1>
+      <h1>{{ $i18n(appName) }}</h1>
 
-      <h3>{{$i18n('app_desc')}}</h3>
+      <h3>{{ $i18n("app_desc") }}</h3>
       <v-divider></v-divider>
-       <v-list
-        dense
-        nav
-      >
-        <v-list-item-group
-          color="primary"
-        >
-          <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            :to="item.href"
-          >
+      <v-list dense nav>
+        <v-list-item-group color="primary">
+          <v-list-item v-for="(item, i) in items" :key="i" :to="item.href">
             <v-list-item-icon>
               <v-icon v-text="item.icon" />
             </v-list-item-icon>
@@ -28,52 +19,58 @@
       </v-list>
     </v-navigation-drawer>
 
-     <v-app-bar
+    <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-            color="primary"
+      color="primary"
       app
       hide-on-scroll
       elevate-on-scroll
       class="pa-0"
     >
-      <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title href="/" class="white--text">{{$i18n(appName)}}</v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title href="/" class="white--text">{{
+        $i18n(appName)
+      }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <LanguageSelector @changeLocale="onChangeLocale"/>
+      <LanguageSelector @changeLocale="onChangeLocale" />
     </v-app-bar>
     <v-content id="content">
-      <router-view/>
+      <router-view />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import LanguageSelector from './components/LanguageSelector'
+import LanguageSelector from "./components/LanguageSelector";
 
 export default {
-  name: 'Mlmorph',
+  name: "Mlmorph",
   components: {
     LanguageSelector
   },
   data: () => ({
-    appName: 'app_name',
+    appName: "app_name",
     items: [
-      { title: 'analyser_title', icon: 'mdi-home', href: '/' },
-      { title: 'generator_title', icon: 'mdi-apps', href: '/generator' },
-      { title: 'ner_title', icon: 'mdi-apps', href: '/ner' },
-      { title: 'spellchecker_title', icon: 'mdi-apps', href: '/spellcheck' },
-      { title: 'numberspellout_title', icon: 'mdi-apps', href: '/number' },
-      { title: 'app_about', icon: 'mdi-information', href: '/about' },
-      { title: 'app_code', icon: 'mdi-code-tags', href: 'https://gitlab.com/smc/mlmorph' }
+      { title: "analyser_title", icon: "mdi-home", href: "/" },
+      { title: "generator_title", icon: "mdi-apps", href: "/generator" },
+      { title: "ner_title", icon: "mdi-apps", href: "/ner" },
+      { title: "spellchecker_title", icon: "mdi-apps", href: "/spellcheck" },
+      { title: "numberspellout_title", icon: "mdi-apps", href: "/number" },
+      { title: "app_about", icon: "mdi-information", href: "/about" },
+      {
+        title: "app_code",
+        icon: "mdi-code-tags",
+        href: "https://gitlab.com/smc/mlmorph"
+      }
     ],
     drawer: null
   }),
   methods: {
-    onChangeLocale: function (locale) {
-      this.i18n.locale = locale
+    onChangeLocale: function(locale) {
+      this.i18n.locale = locale;
     }
   }
-}
+};
 </script>
 
 <style>

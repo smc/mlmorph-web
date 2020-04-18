@@ -8,8 +8,7 @@
       auto-grow
       :value="input"
       @input="update"
-    >
-    </v-text-field>
+    ></v-text-field>
     <h2 v-if="result && result.length > 0">{{ result[0] }}</h2>
     <h3 class="grey--text" v-if="result && result.length > 1">
       {{ result[1] }}
@@ -22,9 +21,9 @@
         For more details on see the article
         <a
           href="http://thottingal.in/blog/2017/12/10/number-spellout-and-generation-in-malayalam-using-morphology-analyser/"
+          >Number spellout and generation in Malayalam using Morphology
+          analyser</a
         >
-          Number spellout and generation in Malayalam using Morphology analyser
-        </a>
       </p>
     </v-footer>
   </v-container>
@@ -93,6 +92,7 @@ export default {
           this.progress = 30;
         })
         .catch(error => {
+          // eslint-disable-next-line no-console
           console.log(error);
           this.progress = 0;
         });

@@ -24,9 +24,9 @@
         :key="word"
         v-for="(result, word) in analysis"
       >
-        <v-flex xs3 sm3 md3 lg3 class="title text-left px-2 mb-2">{{
-          word
-        }}</v-flex>
+        <v-flex xs3 sm3 md3 lg3 class="title text-left px-2 mb-2">
+          {{ word }}
+        </v-flex>
         <v-flex md9 lg9 v-if="result">
           <v-row
             class="d-flex analysis mx-4"
@@ -104,6 +104,7 @@ export default {
           this.loading = false;
         })
         .catch(error => {
+          // eslint-disable-next-line no-console
           console.log(error);
           this.loading = false;
         });
