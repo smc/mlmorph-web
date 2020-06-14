@@ -45,9 +45,6 @@ export default {
     }
   },
   methods: {
-    update() {
-      this.spellcheck(this.input);
-    },
     spellcheck(method, text, success, failure) {
       const api = `/api/spellcheck`;
       if (method === "spellcheck") {
