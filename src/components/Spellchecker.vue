@@ -28,8 +28,11 @@ export default {
       return {
         height: 500,
         menubar: true,
-        toolbar_mode: "floating",
+        toolbar_mode: "sliding",
         toolbar_sticky: true,
+        mobile: {
+          menubar: true
+        },
         plugins: [
           "advlist autolink lists link image    charmap print preview anchor",
           "searchreplace visualblocks code fullscreen",
