@@ -40,7 +40,8 @@ export default {
           "undo  redo | formatselect | bold italic underline strikethrough codeformat | backcolor forecolor |  fontselect | alignleft aligncenter  alignright alignjustify |  bullist numlist outdent indent | removeformat|spellchecker |  help",
         font_formats:
           "മഞ്ജരി=Manjari,helvetica,sans-serif; ഗായത്രി=Gayathri,helvetica,sans-serif; ചിലങ്ക=Chilanka,serif; രചന=Rachana,serif; മീര=Meera,sans-serif; കേരളീയം=Keraleeyam, sans-serif; ഉറൂബ്=Uroob, sans-serif;",
-        spellchecker_callback: this.spellcheck
+        spellchecker_callback: this.spellcheck,
+        spellchecker_wordchar_pattern: /[^\s]+/
       };
     }
   },
