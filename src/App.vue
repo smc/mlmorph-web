@@ -56,12 +56,7 @@ export default {
       { title: "ner_title", icon: "mdi-apps", href: "/ner" },
       { title: "spellchecker_title", icon: "mdi-apps", href: "/spellcheck" },
       { title: "numberspellout_title", icon: "mdi-apps", href: "/number" },
-      { title: "app_about", icon: "mdi-information", href: "/about" },
-      {
-        title: "app_code",
-        icon: "mdi-code-tags",
-        href: "https://gitlab.com/smc/mlmorph"
-      }
+      { title: "app_about", icon: "mdi-information", href: "/about" }
     ],
     drawer: null
   }),

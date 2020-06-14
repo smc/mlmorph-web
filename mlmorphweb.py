@@ -18,7 +18,11 @@ generator = Generator()
 analyser = Analyser()
 
 @app.route("/",defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/ner', defaults={'path':'ner'})
+@app.route('/spellcheck', defaults={'path':'spellcheck'})
+@app.route('/number', defaults={'path':'number'})
+@app.route('/about', defaults={'path':'about'})
+@app.route('/generator', defaults={'path':'generator'})
 def index(path):
     return render_template('index.html',)
 
