@@ -74,6 +74,7 @@ export default {
 </script>
 
 <style>
+@import url("https://smc.org.in/fonts/manjari.css");
 #app {
   font-family: "Avenir", Helvetica, "Lato", "Manjari", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
