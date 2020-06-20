@@ -2,7 +2,6 @@
   <v-app light>
     <v-navigation-drawer fixed v-model="drawer" app>
       <h1>{{ $i18n(appName) }}</h1>
-
       <h3>{{ $i18n("app_desc") }}</h3>
       <v-divider></v-divider>
       <v-list dense nav>
@@ -27,7 +26,14 @@
       elevate-on-scroll
       class="pa-0"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-img
+          :aspect-ratio="1 / 1"
+          width="32"
+          height="32"
+          contain
+          src="@/assets/logo.svg?lazy"
+      /></v-app-bar-nav-icon>
       <v-toolbar-title href="/" class="white--text">{{
         $i18n(appName)
       }}</v-toolbar-title>

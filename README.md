@@ -1,5 +1,10 @@
-Web interface for mlmorph Malayalam Morphology Analyser
-=======================================================
+
+
+# Web interface for mlmorph Malayalam Morphology Analyser
+
+<div style="text-align:center;">
+    <img src="src/assets/logo.svg"/>
+</div>
 
 Flask based web interface for Malayalam morphology analyser and spellchecker
 
