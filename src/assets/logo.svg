@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="30.027mm" height="28.161mm" version="1.1" viewBox="0 0 30.027 28.161" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
- <metadata>
-  <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title/>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
  <g transform="translate(-85.141 -96.628)">
-  <ellipse transform="rotate(-44.821)" cx="-7.6182" cy="147.8" rx="16.897" ry="5.6837" fill="none" stroke="#c00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
-  <path d="m87.811 122.69c6.8396 1.0274 13.919 1.7374 20.767 0.24444 2.6806-0.58443 4.9265-2.6709 5.3408-5.4787 0.90985-6.1664-0.85825-12.433-2.646-18.287" fill="none" stroke="#c00" stroke-linecap="round" stroke-width="2" style="paint-order:fill markers stroke"/>
-  <text fill="#000000" font-family="sans-serif" font-size="10.583px" letter-spacing="0px" word-spacing="0px" style="line-height:1.25;shape-inside:url(#rect919);white-space:pre" xml:space="preserve"><tspan x="66.064453" y="175.68796" visibility="hidden"><tspan dx="0 9.136364 6.4905396 2.9352112 6.4905396 6.2631626 6.4905415 2.9352112 6.4905396" fill="#0000ff">Malayalam</tspan></tspan></text>
+  <ellipse transform="rotate(-44.821)" cx="-7.6182" cy="147.8" rx="16.897" ry="5.6837" fill="none" stroke="#ef5350" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="paint-order:stroke fill markers"/>
+  <path d="m87.811 122.69c6.8396 1.0274 13.919 1.7374 20.767 0.24444 2.6806-0.58443 4.9265-2.6709 5.3408-5.4787 0.90985-6.1664-0.85825-12.433-2.646-18.287" fill="none" stroke="#ef5350" stroke-linecap="round" stroke-width="2" style="paint-order:fill markers stroke"/>
  </g>
 </svg>
