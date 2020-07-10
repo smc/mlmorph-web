@@ -1,7 +1,10 @@
 <template>
   <v-app light>
-    <v-navigation-drawer fixed v-model="drawer" app>
-      <h1>{{ $i18n(appName) }}</h1>
+    <v-navigation-drawer
+      :clipped="$vuetify.breakpoint.mdAndUp"
+      v-model="drawer"
+      app
+    >
       <h3>{{ $i18n("app_desc") }}</h3>
       <v-divider></v-divider>
       <v-list dense nav>
@@ -80,7 +83,6 @@ export default {
   font-family: "Avenir", Helvetica, "Lato", "Manjari", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 #content {
