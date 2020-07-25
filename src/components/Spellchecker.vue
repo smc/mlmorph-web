@@ -34,7 +34,7 @@ export default {
           menubar: true
         },
         plugins: [
-          "advlist autolink lists link image    charmap print preview anchor",
+          "advlist autolink lists link image charmap print preview anchor",
           "searchreplace visualblocks code fullscreen",
           "insertdatetime media table paste code help wordcount spellchecker"
         ],
@@ -43,14 +43,13 @@ export default {
           "undo  redo | formatselect | fontselect | bold italic underline strikethrough codeformat | backcolor forecolor | alignleft aligncenter  alignright alignjustify | bullist numlist outdent indent | removeformat|spellchecker | help",
         font_formats:
           "മഞ്ജരി=Manjari,helvetica,sans-serif; ഗായത്രി=Gayathri,helvetica,sans-serif; ചിലങ്ക=Chilanka,serif; രചന=Rachana,serif; മീര=Meera,sans-serif; കേരളീയം=Keraleeyam, sans-serif; ഉറൂബ്=Uroob, sans-serif;",
-        spellchecker_callback: this.spellcheck,
-        spellchecker_wordchar_pattern: /[^\s]+/
+        spellchecker_callback: this.spellcheck
       };
     }
   },
   methods: {
     spellcheck(method, text, success, failure) {
-      const api = `/api/spellcheck`;
+      const api = `https://morph.smc.org.in/api/spellcheck`;
       if (method === "spellcheck") {
         axios
           .post(api, {
@@ -60,11 +59,11 @@ export default {
             const results = response.data;
             const misspellings = {};
             Object.keys(results).forEach(word => {
-              if (!results[word].correct) {
+              if (word.trim() && !results[word].correct) {
                 misspellings[word] = results[word].suggestions;
               }
             });
-
+          console.log(misspellings)
             success({ words: misspellings, dictionary: this.dictionary });
           })
           .catch(error => {
