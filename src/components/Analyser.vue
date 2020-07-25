@@ -30,41 +30,42 @@
         <v-flex md9 lg9 v-if="result">
           <v-row
             class="d-flex analysis mx-4"
-            v-if="aindex == 0"
             :key="aindex"
             v-for="(analysis, aindex) in result"
           >
-            <v-card
-              class="morpheme ma-2 py-0"
-              tile
-              flat
-              outlined
-              :key="mindex"
-              v-for="(morpheme, mindex) in analysis.morphemes"
-            >
-              <v-card-title
-                class="grey lighten-3 pa-1 text-left body-1 root mx-0"
-                >{{ morpheme.root }}</v-card-title
+            <template v-if="aindex == 0">
+              <v-card
+                class="morpheme ma-2 py-0"
+                tile
+                flat
+                outlined
+                :key="mindex"
+                v-for="(morpheme, mindex) in analysis.morphemes"
               >
-              <v-list dense>
-                <v-list-item-group>
-                  <v-list-item
-                    v-for="(pos, posindex) in morpheme.pos"
-                    :key="posindex"
-                  >
-                    <v-list-item-icon>
-                      <v-icon>mdi-tag-outline</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-content>
-                      <v-list-item-title
-                        class="text-left"
-                        v-text="getTag(pos).tag"
-                      ></v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
-            </v-card>
+                <v-card-title
+                  class="grey lighten-3 pa-1 text-left body-1 root mx-0"
+                  >{{ morpheme.root }}</v-card-title
+                >
+                <v-list dense>
+                  <v-list-item-group>
+                    <v-list-item
+                      v-for="(pos, posindex) in morpheme.pos"
+                      :key="posindex"
+                    >
+                      <v-list-item-icon>
+                        <v-icon>mdi-tag-outline</v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title
+                          class="text-left"
+                          v-text="getTag(pos).tag"
+                        ></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-card>
+            </template>
           </v-row>
         </v-flex>
       </v-sheet>
