@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     spellcheck(method, text, success, failure) {
-      const api = `https://morph.smc.org.in/api/spellcheck`;
+      const api = `/api/spellcheck`;
       if (method === "spellcheck") {
         axios
           .post(api, {
