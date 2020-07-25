@@ -12,9 +12,9 @@
     "axios": "^0.19.2",
     "core-js": "^2.6.11",
     "vue": "^2.6.11",
-    "vue-banana-i18n": "^1.0.5",
-    "vue-router": "^3.1.6",
-    "vuetify": "^2.2.22"
+    "vue-banana-i18n": "^1.2.2",
+    "vue-router": "^3.3.4",
+    "vuetify": "^2.3.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",
@@ -22,14 +22,14 @@
     "@vue/cli-service": "^3.12.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.26.3",
+    "sass": "^1.26.10",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "^1.1.2",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.4.3"
+    "vuetify-loader": "^1.6.0"
   },
   "eslintConfig": {
     "root": true,
