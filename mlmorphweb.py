@@ -7,7 +7,7 @@ from flask_swagger import swagger
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 from mlmorph import Generator, Analyser
-from mlmorph_spellchecker import spellcheck, getSuggestions
+from mlmorph_spellchecker import SpellChecker
 
 app = Flask(__name__,
     static_folder = "./dist/",
@@ -16,6 +16,7 @@ app = Flask(__name__,
 
 generator = Generator()
 analyser = Analyser()
+spellchecker = SpellChecker()
 
 @app.route("/",defaults={'path': ''})
 @app.route('/ner', defaults={'path':'ner'})
@@ -150,10 +151,10 @@ def do_spellcheck():
     # real analysis
     for windex in range(len(words)):
         word = words[windex]
-        isCorrect = spellcheck(word, analyser)
+        isCorrect = spellchecker.spellcheck(word)
         suggestions = []
         if not isCorrect:
-            suggestions = getSuggestions(word, analyser)
+            suggestions = spellchecker.candidates(word)
         result[word] = {'correct': isCorrect, 'suggestions': suggestions}
     return jsonify(result)
 
