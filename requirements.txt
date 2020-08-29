@@ -2,5 +2,5 @@ Flask
 regex
 gunicorn
 mlmorph>=1.1.3
-mlmorph-spellchecker>=1.1.0
+mlmorph-spellchecker>=1.1.1
 flask-swagger
