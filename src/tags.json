@@ -370,5 +370,9 @@
 	{
 		"id":"n-v-compound",
 		"tag": "Noun verb compound"
+	},
+	{
+		"id":"fw",
+		"tag": "Foreign word"
 	}
 ]
