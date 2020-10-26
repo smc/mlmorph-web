@@ -90,7 +90,7 @@ export default {
     },
     analyse() {
       const api = `/api/analyse`;
-      const words = this.input.split(" ");
+      const words = this.input.split(new RegExp(/\s/));
       this.analysis = {};
       this.loading = true;
       axios

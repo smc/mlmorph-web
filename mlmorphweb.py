@@ -59,7 +59,7 @@ def do_analyse():
     else:
         text = request.args.get('text')
     text = text.strip()
-    words = regex.split(r'(\s+)', text)
+    words = regex.split(r'\s+', text)
     # real analysis
     for windex in range(len(words)):
         word = words[windex]
@@ -146,7 +146,7 @@ def do_spellcheck():
     else:
         text = request.args.get('text')
     text = text.strip()
-    words = regex.split(r'(\s+)', text)
+    words = regex.split(r'\s+', text)
     result = {}
     # real analysis
     for windex in range(len(words)):

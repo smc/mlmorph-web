@@ -63,7 +63,6 @@ export default {
                 misspellings[word] = results[word].suggestions;
               }
             });
-          console.log(misspellings)
             success({ words: misspellings, dictionary: this.dictionary });
           })
           .catch(error => {
